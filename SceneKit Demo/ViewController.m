@@ -16,12 +16,37 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  // Do any additional setup after loading the view, typically from a nib.
-}
 
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
+  SCNView *sceneView = [[SCNView alloc] initWithFrame:self.view.frame];
+  [self.view addSubview:sceneView];
+  
+  SCNScene *scene = [[SCNScene alloc] init];
+  sceneView.scene = scene;
+  
+  
+  
+  SCNCamera *camera = [[SCNCamera alloc] init];
+  SCNNode *cameraNode = [[SCNNode alloc] init];
+  cameraNode.camera = camera;
+  cameraNode.position = SCNVector3Make(0.0, 0.0, 3.0);
+  
+  
+  
+  SCNLight *light = [[SCNLight alloc] init];
+  light.type = SCNLightTypeOmni;
+  
+  SCNNode *lightNode = [[SCNNode alloc] init];
+  lightNode.light = light;
+  lightNode.position = SCNVector3Make(1.5, 1.5, 1.5);
+  
+  
+  
+  SCNBox *cubeGeometry = [SCNBox boxWithWidth:.8 height:.8 length:.8 chamferRadius:0.0];
+  SCNNode *cubeNode = [SCNNode nodeWithGeometry:cubeGeometry];
+  
+  [scene.rootNode addChildNode:cameraNode];
+  [scene.rootNode addChildNode:lightNode];
+  [scene.rootNode addChildNode:cubeNode];
 }
 
 @end
