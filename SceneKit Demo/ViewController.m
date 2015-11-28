@@ -28,7 +28,7 @@
   SCNCamera *camera = [[SCNCamera alloc] init];
   SCNNode *cameraNode = [[SCNNode alloc] init];
   cameraNode.camera = camera;
-  cameraNode.position = SCNVector3Make(0.0, 0.0, 3.0);
+  cameraNode.position = SCNVector3Make(-3.0, 3.0, 3.0);
   
   
   
@@ -40,9 +40,13 @@
   lightNode.position = SCNVector3Make(1.5, 1.5, 1.5);
   
   
-  
   SCNBox *cubeGeometry = [SCNBox boxWithWidth:.8 height:.8 length:.8 chamferRadius:0.0];
   SCNNode *cubeNode = [SCNNode nodeWithGeometry:cubeGeometry];
+  
+  SCNLookAtConstraint *constraint = [SCNLookAtConstraint lookAtConstraintWithTarget:cubeNode];
+  constraint.gimbalLockEnabled = YES;
+  cameraNode.constraints = @[constraint];
+  
   
   [scene.rootNode addChildNode:cameraNode];
   [scene.rootNode addChildNode:lightNode];
