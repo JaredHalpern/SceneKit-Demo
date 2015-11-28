@@ -40,8 +40,28 @@
   lightNode.position = SCNVector3Make(1.5, 1.5, 1.5);
   
   
-  SCNBox *cubeGeometry = [SCNBox boxWithWidth:.8 height:.8 length:.8 chamferRadius:0.0];
+  SCNBox *cubeGeometry = [SCNBox boxWithWidth:1.0 height:1.0 length:1.0 chamferRadius:0.0];
   SCNNode *cubeNode = [SCNNode nodeWithGeometry:cubeGeometry];
+  
+  // plane underneath
+  
+  SCNBox *planeGeometry = [SCNBox boxWithWidth:50. height:50. length:50. chamferRadius:0.0];
+  SCNNode *planeNode = [SCNNode nodeWithGeometry:planeGeometry];
+  
+  planeNode.eulerAngles = SCNVector3Make(GLKMathDegreesToRadians(-90), 0, 0);
+  planeNode.position = SCNVector3Make(0, -0.5, 0);
+  
+  // Materials
+  
+  SCNMaterial *redMaterial = [[SCNMaterial alloc] init];
+  redMaterial.diffuse.contents = [UIColor redColor];
+  
+  SCNMaterial *greenMaterial = [[SCNMaterial alloc] init];
+  greenMaterial.diffuse.contents = [UIColor greenColor];
+  
+  cubeGeometry.materials = @[redMaterial, greenMaterial];
+  
+  // Constraints
   
   SCNLookAtConstraint *constraint = [SCNLookAtConstraint lookAtConstraintWithTarget:cubeNode];
   constraint.gimbalLockEnabled = YES;
@@ -51,6 +71,9 @@
   [scene.rootNode addChildNode:cameraNode];
   [scene.rootNode addChildNode:lightNode];
   [scene.rootNode addChildNode:cubeNode];
+  [scene.rootNode addChildNode:planeNode];
+  
+  
 }
 
 @end

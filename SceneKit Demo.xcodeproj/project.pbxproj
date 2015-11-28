@@ -14,6 +14,7 @@
 		7FB019331C03FA3A00080DF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FB019321C03FA3A00080DF4 /* Assets.xcassets */; };
 		7FB019361C03FA3A00080DF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FB019341C03FA3A00080DF4 /* LaunchScreen.storyboard */; };
 		7FB0193E1C03FAC400080DF4 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FB0193D1C03FAC400080DF4 /* SceneKit.framework */; };
+		7FB019401C09F03C00080DF4 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FB0193F1C09F03C00080DF4 /* GLKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		7FB019351C03FA3A00080DF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7FB019371C03FA3A00080DF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FB0193D1C03FAC400080DF4 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		7FB0193F1C09F03C00080DF4 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FB019401C09F03C00080DF4 /* GLKit.framework in Frameworks */,
 				7FB0193E1C03FAC400080DF4 /* SceneKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,6 +48,7 @@
 		7FB0191A1C03FA3A00080DF4 = {
 			isa = PBXGroup;
 			children = (
+				7FB0193F1C09F03C00080DF4 /* GLKit.framework */,
 				7FB0193D1C03FAC400080DF4 /* SceneKit.framework */,
 				7FB019251C03FA3A00080DF4 /* SceneKit Demo */,
 				7FB019241C03FA3A00080DF4 /* Products */,
