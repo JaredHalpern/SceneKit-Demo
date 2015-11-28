@@ -24,48 +24,49 @@
   sceneView.scene = scene;
   
   
-  
   SCNCamera *camera = [[SCNCamera alloc] init];
   SCNNode *cameraNode = [[SCNNode alloc] init];
   cameraNode.camera = camera;
-  cameraNode.position = SCNVector3Make(-3.0, 3.0, 3.0);
+  cameraNode.position = SCNVector3Make(3.0, 3.0, 3.0);
   
-  
-  
-  SCNLight *light = [[SCNLight alloc] init];
-  light.type = SCNLightTypeOmni;
-  
-  SCNNode *lightNode = [[SCNNode alloc] init];
-  lightNode.light = light;
-  lightNode.position = SCNVector3Make(1.5, 1.5, 1.5);
-  
+//  SCNLight *light = [[SCNLight alloc] init];
+//  light.type = SCNLightTypeOmni;
+//  SCNNode *lightNode = [[SCNNode alloc] init];
+//  lightNode.light = light;
+//  lightNode.position = SCNVector3Make(1.5, 1.5, 1.5);
   
   SCNBox *cubeGeometry = [SCNBox boxWithWidth:1.0 height:1.0 length:1.0 chamferRadius:0.0];
   SCNNode *cubeNode = [SCNNode nodeWithGeometry:cubeGeometry];
   
+  SCNLight *light = [SCNLight light];
+  light.type = SCNLightTypeSpot;
+  light.spotInnerAngle = 30.0;
+  light.spotOuterAngle = 80.0;
+  light.castsShadow = YES;
+  SCNNode *lightNode = [SCNNode node];
+  lightNode.light = light;
+  lightNode.position = SCNVector3Make(1.5, 1.5, 1.5);
+  SCNLookAtConstraint *constraint = [SCNLookAtConstraint lookAtConstraintWithTarget:cubeNode];
+  constraint.gimbalLockEnabled = YES;
+  cameraNode.constraints = @[constraint];
+  lightNode.constraints = @[constraint];
+  
   // plane underneath
   
-  SCNBox *planeGeometry = [SCNBox boxWithWidth:50. height:50. length:50. chamferRadius:0.0];
+  SCNPlane *planeGeometry = [SCNPlane planeWithWidth:100. height:100.];
   SCNNode *planeNode = [SCNNode nodeWithGeometry:planeGeometry];
-  
-  planeNode.eulerAngles = SCNVector3Make(GLKMathDegreesToRadians(-90), 0, 0);
+  planeNode.eulerAngles = SCNVector3Make(GLKMathDegreesToRadians(-90.0), 0, 0);
   planeNode.position = SCNVector3Make(0, -0.5, 0);
   
   // Materials
   
   SCNMaterial *redMaterial = [[SCNMaterial alloc] init];
   redMaterial.diffuse.contents = [UIColor redColor];
+  cubeGeometry.materials = @[redMaterial];
   
   SCNMaterial *greenMaterial = [[SCNMaterial alloc] init];
   greenMaterial.diffuse.contents = [UIColor greenColor];
-  
-  cubeGeometry.materials = @[redMaterial, greenMaterial];
-  
-  // Constraints
-  
-  SCNLookAtConstraint *constraint = [SCNLookAtConstraint lookAtConstraintWithTarget:cubeNode];
-  constraint.gimbalLockEnabled = YES;
-  cameraNode.constraints = @[constraint];
+  planeGeometry.materials = @[greenMaterial];
   
   
   [scene.rootNode addChildNode:cameraNode];
