@@ -27,16 +27,15 @@
   SCNCamera *camera = [[SCNCamera alloc] init];
   SCNNode *cameraNode = [[SCNNode alloc] init];
   cameraNode.camera = camera;
-  cameraNode.position = SCNVector3Make(3.0, 3.0, 3.0);
-  
-//  SCNLight *light = [[SCNLight alloc] init];
-//  light.type = SCNLightTypeOmni;
-//  SCNNode *lightNode = [[SCNNode alloc] init];
-//  lightNode.light = light;
-//  lightNode.position = SCNVector3Make(1.5, 1.5, 1.5);
+  cameraNode.position = SCNVector3Make(-3.0, 3.0, 3.0);
   
   SCNBox *cubeGeometry = [SCNBox boxWithWidth:1.0 height:1.0 length:1.0 chamferRadius:0.0];
   SCNNode *cubeNode = [SCNNode nodeWithGeometry:cubeGeometry];
+  
+  SCNLight *ambientLight = [SCNLight light];
+  ambientLight.type = SCNLightTypeAmbient;
+  ambientLight.color = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
+  cameraNode.light = ambientLight;
   
   SCNLight *light = [SCNLight light];
   light.type = SCNLightTypeSpot;
@@ -45,7 +44,7 @@
   light.castsShadow = YES;
   SCNNode *lightNode = [SCNNode node];
   lightNode.light = light;
-  lightNode.position = SCNVector3Make(1.5, 1.5, 1.5);
+  lightNode.position = SCNVector3Make(2.0, 1.5, 1.5);
   SCNLookAtConstraint *constraint = [SCNLookAtConstraint lookAtConstraintWithTarget:cubeNode];
   constraint.gimbalLockEnabled = YES;
   cameraNode.constraints = @[constraint];
