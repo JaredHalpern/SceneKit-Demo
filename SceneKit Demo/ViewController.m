@@ -23,14 +23,10 @@
   SCNScene *scene = [[SCNScene alloc] init];
   sceneView.scene = scene;
   
-  
-  
   SCNCamera *camera = [[SCNCamera alloc] init];
   SCNNode *cameraNode = [[SCNNode alloc] init];
   cameraNode.camera = camera;
   cameraNode.position = SCNVector3Make(-3.0, 3.0, 3.0);
-  
-  
   
   SCNLight *light = [[SCNLight alloc] init];
   light.type = SCNLightTypeOmni;
