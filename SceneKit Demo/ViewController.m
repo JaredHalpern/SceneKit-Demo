@@ -29,7 +29,7 @@
     cameraNode.camera = camera;
     cameraNode.position = SCNVector3Make(-3.0, 3.0, 3.0);
     
-    SCNBox *cubeGeometry = [SCNBox boxWithWidth:1.0 height:1.0 length:1.0 chamferRadius:0.0];
+    SCNBox *cubeGeometry = [SCNBox boxWithWidth:1.0 height:1.0 length:1.0 chamferRadius:.2];
     SCNNode *cubeNode = [SCNNode nodeWithGeometry:cubeGeometry];
     
     SCNLight *ambientLight = [SCNLight light];
